@@ -14,6 +14,7 @@ public class doorTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        LevelManager.Instance.change2Dlevel(number);
+        if(LevelManager.Instance.levelNumber2D==number)
+            LevelManager.Instance.change2Dlevel(number);
     }
 }

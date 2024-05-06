@@ -10,9 +10,9 @@ public class LeverTrigger : MonoBehaviour
     public Transform pivot;
     private MeshFilter meshFilter;
     public Vector3 size;
+    public bool isUp=false;
     private void Start()
     {
-        
         meshFilter = GetComponent<MeshFilter>();
         if (meshFilter != null && meshFilter.mesh != null)
         {
@@ -22,7 +22,7 @@ public class LeverTrigger : MonoBehaviour
             Bounds bounds = mesh.bounds;
             // 获取模型的尺寸
             size = bounds.size;
-            Debug.Log(size);
+            
         }
         else
         {

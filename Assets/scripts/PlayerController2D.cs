@@ -30,6 +30,7 @@ namespace TarodevController
 
         public Transform pivot2D;
         public Transform sprite;
+        public float factor=1f;
         #endregion
 
         private float _time;
@@ -93,8 +94,18 @@ namespace TarodevController
 
         void setSprite()
         {
-            Vector3 RelativePosition = new Vector3(1f * transform.position.x, 0.01f, 1f * transform.position.y);
-            sprite.position = pivot2D.TransformPoint(RelativePosition );
+            Vector3 RelativePosition;
+            if (LevelManager.Instance.levels[LevelManager.Instance.levelNumber2D-1].isUp)
+            {
+                RelativePosition = new Vector3(factor * transform.position.x, factor * transform.position.y,0.01f );
+            }
+            else
+            {
+                RelativePosition = new Vector3(factor * transform.position.x, 0.01f, factor * transform.position.y);
+            }
+
+            sprite.position = pivot2D.TransformPoint(RelativePosition);
+            sprite.rotation = pivot2D.rotation;
         }
 
         #region Collisions

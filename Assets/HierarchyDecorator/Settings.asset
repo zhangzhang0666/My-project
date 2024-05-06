@@ -116,85 +116,6 @@ MonoBehaviour:
         m_FixedHeight: 0
         m_StretchWidth: 1
         m_StretchHeight: 0
-    - prefix: '-'
-      name: Subheader
-      font: {fileID: 0}
-      fontSize: 10
-      fontAlignment: 3
-      fontStyle: 1
-      textFormatting: 0
-      modes:
-      - fontColour: {r: 0.245283, g: 0.245283, b: 0.245283, a: 1}
-        backgroundColour: {r: 0.7960785, g: 0.7960785, b: 0.7960785, a: 1}
-      - fontColour: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
-        backgroundColour: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 1}
-      style:
-        m_Name: Subheader
-        m_Normal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
-        m_Hover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Active:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Focused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnNormal:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnHover:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnActive:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_OnFocused:
-          m_Background: {fileID: 0}
-          m_ScaledBackgrounds: []
-          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
-        m_Border:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Margin:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Padding:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Overflow:
-          m_Left: 0
-          m_Right: 0
-          m_Top: 0
-          m_Bottom: 0
-        m_Font: {fileID: 0}
-        m_FontSize: 10
-        m_FontStyle: 1
-        m_Alignment: 3
-        m_WordWrap: 0
-        m_RichText: 1
-        m_TextClipping: 0
-        m_ImagePosition: 0
-        m_ContentOffset: {x: 0, y: 0}
-        m_FixedWidth: 0
-        m_FixedHeight: 0
-        m_StretchWidth: 1
-        m_StretchHeight: 0
     - prefix: +
       name: Mini Header (Centered)
       font: {fileID: 0}
@@ -280,7 +201,7 @@ MonoBehaviour:
       fontSize: 14
       fontAlignment: 4
       fontStyle: 2
-      textFormatting: 0
+      textFormatting: 2
       modes:
       - fontColour: {r: 1, g: 1, b: 1, a: 1}
         backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
@@ -343,6 +264,85 @@ MonoBehaviour:
         m_Font: {fileID: 0}
         m_FontSize: 14
         m_FontStyle: 2
+        m_Alignment: 4
+        m_WordWrap: 0
+        m_RichText: 1
+        m_TextClipping: 0
+        m_ImagePosition: 0
+        m_ContentOffset: {x: 0, y: 0}
+        m_FixedWidth: 0
+        m_FixedHeight: 0
+        m_StretchWidth: 1
+        m_StretchHeight: 0
+    - prefix: '-'
+      name: level Header (Centered)
+      font: {fileID: 0}
+      fontSize: 12
+      fontAlignment: 4
+      fontStyle: 1
+      textFormatting: 2
+      modes:
+      - fontColour: {r: 1, g: 1, b: 1, a: 1}
+        backgroundColour: {r: 0.38568, g: 0.6335747, b: 0.764151, a: 1}
+      - fontColour: {r: 0, g: 0, b: 0, a: 1}
+        backgroundColour: {r: 0.990566, g: 0.8838725, b: 0.43454072, a: 1}
+      style:
+        m_Name: level Header (Centered)
+        m_Normal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Hover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Active:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Focused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnNormal:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnHover:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnActive:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_OnFocused:
+          m_Background: {fileID: 0}
+          m_ScaledBackgrounds: []
+          m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+        m_Border:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Margin:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Padding:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Overflow:
+          m_Left: 0
+          m_Right: 0
+          m_Top: 0
+          m_Bottom: 0
+        m_Font: {fileID: 0}
+        m_FontSize: 12
+        m_FontStyle: 1
         m_Alignment: 4
         m_WordWrap: 0
         m_RichText: 1
@@ -3218,6 +3218,22 @@ MonoBehaviour:
         shown: 0
         isBuiltIn: 0
         script: {fileID: 11500000, guid: 61eb41108fc8544459dd4e0fd027a67d, type: 3}
+      - name: LightManager
+        content:
+          m_Text: LightManager
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: LightManager
+        shown: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: 718673046e43d7942934919a31b59a59, type: 3}
+      - name: level1trigger
+        content:
+          m_Text: level1trigger
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: level1trigger
+        shown: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: 0840f84688bf5eb4a8ae8597517461a5, type: 3}
     excludedComponents:
       name: Excluded
       components:

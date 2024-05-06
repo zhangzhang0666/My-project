@@ -18,7 +18,6 @@ public class LevelManager : MonoBehaviour
     private CommandBuffer cmd;
     private RTHandle maskHandle;
     private RTHandle brushHandle;
-    private Vector2 levelSize;
     public Texture[] brushs;
     private List<RTHandle>  maskrts = new List<RTHandle>();
     private List<RTHandle> brushrts = new List<RTHandle>();
@@ -68,7 +67,7 @@ public class LevelManager : MonoBehaviour
     public void set3Dlevel(GameObject renderobject,int number,Vector2 size)
     {
         levelNumber3D = number;
-        levelSize = size;
+        
         maskHandle = maskrts[number];
         cmd.Clear();
         Blitter.BlitCameraTexture(cmd, brushHandle,maskHandle, StepMat, 0);
@@ -87,7 +86,7 @@ public class LevelManager : MonoBehaviour
     public void drawMask(Vector2 newpoint)
     {
         
-        Vector2 point = newpoint / levelSize;
+        Vector2 point = newpoint / levels[levelNumber3D-1].size;
         StepMat.SetVector("_BrushPos",point);
     }
     
