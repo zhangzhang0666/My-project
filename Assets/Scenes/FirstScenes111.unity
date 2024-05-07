@@ -7318,7 +7318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.2
-  speedScale: 5
+  speedScale: 2
   pivot3D: {fileID: 0}
   nip: {fileID: 0}
   rotatespeed: 500
