@@ -9,6 +9,7 @@ public class LeverTrigger : MonoBehaviour
     [SerializeField]protected int number;
     public Transform pivot;
     private MeshFilter meshFilter;
+    [HideInInspector]
     public Vector2 size;
     public bool isUp=false;
     private void Start()
@@ -29,22 +30,26 @@ public class LeverTrigger : MonoBehaviour
             //{
             //    size = new Vector2(bounds.size.x,bounds.size.z);
             //}
-            
-            size = new Vector2(bounds.size.x,bounds.size.z);
+            Vector3 bsz = bounds.size;
+            Vector3 tl = transform.localScale;
+            Vector3 sz= new Vector3(bsz.x* tl.x,bsz.y*tl.y,bsz.z*tl.z);
+            size = new Vector2(sz.x,sz.z);
         }
         else
         {
             Debug.Log("找不到MeshFilter组件或Mesh为空");
         }
+
+        pivot.localScale = new Vector3(1f/ transform.localScale.x,1f/ transform.localScale.y,1f/ transform.localScale.z);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player3D"))
         {
+            Debug.Log(size);
             LevelManager.Instance.set3Dlevel(gameObject,number,size);
             LevelManager.Instance.isDraw = true;
-            
         }
     }
     private void OnCollisionExit(Collision other)

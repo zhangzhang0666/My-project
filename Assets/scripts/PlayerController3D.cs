@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -15,10 +16,9 @@ public class PlayerController3D : MonoBehaviour
     
     private Vector3 lastPosition1;
     private Vector3 lastPosition2;
+    [HideInInspector]
     public Transform pivot3D;
     private Vector3 movement;
-
-    private CharacterController characterController;
 
     public float rotatespeed=800f;
 
@@ -34,7 +34,8 @@ public class PlayerController3D : MonoBehaviour
     {
         lastPosition1 = transform.position;
         lastPosition2 = transform.position;
-        characterController = GetComponent<CharacterController>();
+        _rigidbody = GetComponent<Rigidbody>();
+        
         animator = GetComponent<Animator>();
         animator.SetFloat("scaleFactor",1/animator.humanScale);
     }
@@ -67,10 +68,11 @@ public class PlayerController3D : MonoBehaviour
     void Move()
     {
         targetSpeed = speed * movement.magnitude;
-        //animator.speed = speedScale;
+        animator.speed = speedScale;
         currentSpeed = Mathf.Lerp(currentSpeed,targetSpeed,  0.8f);
         animator.SetFloat("speed",currentSpeed);
-        characterController.SimpleMove(animator.velocity);
+        _rigidbody.velocity = animator.velocity;
+        //characterController.SimpleMove(animator.velocity);
         
         //feetTween = Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f);
         //feetTween = feetTween > 0.5f ? 1f : -1f;
@@ -90,6 +92,7 @@ public class PlayerController3D : MonoBehaviour
             return;
         Vector3 relativepoint = pivot3D.InverseTransformPoint(transform.position);
         Vector2 newpoint = new Vector2(relativepoint.x, relativepoint.z);
+        Debug.Log(newpoint);
         if (Vector3.Distance(_rigidbody.position,lastPosition1) > 0.03f)
         {
             LevelManager.Instance.AddPoints(newpoint);

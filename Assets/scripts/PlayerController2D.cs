@@ -27,10 +27,11 @@ namespace TarodevController
         public Vector2 FrameInput => _frameInput.Move;
         public event Action<bool, float> GroundedChanged;
         public event Action Jumped;
-
+        [HideInInspector]
         public Transform pivot2D;
+        
         public Transform sprite;
-        public float factor=1f;
+        public float scaleFactor=1f;
         #endregion
 
         private float _time;
@@ -97,11 +98,11 @@ namespace TarodevController
             Vector3 RelativePosition;
             if (LevelManager.Instance.levels[LevelManager.Instance.levelNumber2D-1].isUp)
             {
-                RelativePosition = new Vector3(factor * transform.position.x, factor * transform.position.y,-0.01f );
+                RelativePosition = new Vector3(scaleFactor* transform.position.x, scaleFactor* transform.position.y,-0.01f );
             }
             else
             {
-                RelativePosition = new Vector3(factor * transform.position.x, 0.01f, factor * transform.position.y);
+                RelativePosition = new Vector3(scaleFactor * transform.position.x, 0.01f,scaleFactor* transform.position.y);
             }
 
             sprite.position = pivot2D.TransformPoint(RelativePosition);

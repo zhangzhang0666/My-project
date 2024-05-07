@@ -7,6 +7,7 @@ Shader "Unlit/Litdraw"
 
         [MainTexture] _BaseMap("Albedo", 2D) = "black" {}
         _Mask("Mask", 2D) = "black" {}
+        _maskColor("maskColor",Color)=(1,1,1,1)
         [MainColor] _BaseColor("Color", Color) = (1,1,1,1)
 
         _Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5

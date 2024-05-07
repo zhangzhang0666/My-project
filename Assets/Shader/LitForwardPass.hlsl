@@ -18,7 +18,7 @@
 // keep this file in sync with LitGBufferPass.hlsl
 TEXTURE2D(_Mask);
 SAMPLER(sampler_Mask);
-
+float4 _maskColor;
 struct Attributes
 {
     float4 positionOS   : POSITION;
@@ -238,7 +238,7 @@ void LitPassFragment(
     color.a = OutputAlpha(color.a, IsSurfaceTypeTransparent(_Surface));
 
     half4 maskcol = SAMPLE_TEXTURE2D(_Mask, sampler_Mask, input.uv);
-    outColor = color+maskcol;
+    outColor = color+maskcol*_maskColor;
 
 #ifdef _WRITE_RENDERING_LAYERS
     uint renderingLayers = GetMeshRenderingLayer();

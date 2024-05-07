@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     private RTHandle maskHandle;
     private RTHandle brushHandle;
     public Texture[] brushs;
+    public Color[] brushColor;
     private List<RTHandle>  maskrts = new List<RTHandle>();
     private List<RTHandle> brushrts = new List<RTHandle>();
     public float brushsize;
@@ -31,7 +32,8 @@ public class LevelManager : MonoBehaviour
     public Transform world2D;
     public Transform[] starts;
     #endregion
-    
+
+    public int brushNumber;
     private void Awake()
     {
         Instance = this;
@@ -67,14 +69,21 @@ public class LevelManager : MonoBehaviour
     public void set3Dlevel(GameObject renderobject,int number,Vector2 size)
     {
         levelNumber3D = number;
-        
-        maskHandle = maskrts[number];
+        maskHandle = maskrts[levelNumber3D];
+        brushHandle = brushrts[brushNumber];
         cmd.Clear();
         Blitter.BlitCameraTexture(cmd, brushHandle,maskHandle, StepMat, 0);
         renderobject.GetComponent<Renderer>().material.SetTexture("_Mask",maskHandle);
+        renderobject.GetComponent<Renderer>().material.SetColor("_maskColor",brushColor[brushNumber]);
         StepMat.SetVector("_BrushSize",size/brushsize);
         StepMat.SetVector("_BrushPos",Vector2.zero);
-        PlayerController3D.Instance.pivot3D = levels[number-1].pivot;
+        PlayerController3D.Instance.pivot3D = levels[levelNumber3D-1].pivot;
+    }
+
+    void setBrush(int number)
+    {
+        brushHandle = brushrts[number];
+        
     }
     
     void drawRT(ScriptableRenderContext context, Camera camera)
