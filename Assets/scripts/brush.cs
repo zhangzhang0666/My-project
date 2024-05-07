@@ -32,6 +32,7 @@ public class brush : MonoBehaviour
                 Animator animator = other.GetComponent<Animator>();
                 rigBuilder.Build();
                 animator.Rebind();
+                other.GetComponent<PlayerController3D>().nip = brushNip;
             }
         }
     }
@@ -40,5 +41,6 @@ public class brush : MonoBehaviour
     {
         Debug.Log("捡笔");
     }
+    
     
 }
