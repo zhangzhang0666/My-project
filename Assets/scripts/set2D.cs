@@ -65,6 +65,8 @@ public class set2D : MonoBehaviour
             
             box.isTrigger = true;
         }
+
+        Debug.Log("success");
     }
 }
 #endif

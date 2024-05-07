@@ -11,6 +11,8 @@ public class LeverTrigger : MonoBehaviour
     private MeshFilter meshFilter;
     [HideInInspector]
     public Vector2 size;
+
+    [HideInInspector] public Vector2 realSize;
     public bool isUp=false;
     private void Start()
     {
@@ -34,13 +36,14 @@ public class LeverTrigger : MonoBehaviour
             Vector3 tl = transform.localScale;
             Vector3 sz= new Vector3(bsz.x* tl.x,bsz.y*tl.y,bsz.z*tl.z);
             size = new Vector2(sz.x,sz.z);
+            //realSize= new Vector2(bsz.x,bsz.z);
         }
         else
         {
             Debug.Log("找不到MeshFilter组件或Mesh为空");
         }
 
-        pivot.localScale = new Vector3(1f/ transform.localScale.x,1f/ transform.localScale.y,1f/ transform.localScale.z);
+        //pivot.localScale = new Vector3(1f/ transform.localScale.x,1f/ transform.localScale.y,1f/ transform.localScale.z);
     }
 
     private void OnCollisionEnter(Collision other)

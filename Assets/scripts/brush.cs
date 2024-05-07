@@ -41,6 +41,4 @@ public class brush : MonoBehaviour
     {
         Debug.Log("捡笔");
     }
-    
-    
 }
