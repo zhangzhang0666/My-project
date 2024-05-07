@@ -97,7 +97,7 @@ namespace TarodevController
             Vector3 RelativePosition;
             if (LevelManager.Instance.levels[LevelManager.Instance.levelNumber2D-1].isUp)
             {
-                RelativePosition = new Vector3(factor * transform.position.x, factor * transform.position.y,0.01f );
+                RelativePosition = new Vector3(factor * transform.position.x, factor * transform.position.y,-0.01f );
             }
             else
             {

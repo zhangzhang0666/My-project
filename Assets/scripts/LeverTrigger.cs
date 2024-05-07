@@ -9,7 +9,7 @@ public class LeverTrigger : MonoBehaviour
     [SerializeField]protected int number;
     public Transform pivot;
     private MeshFilter meshFilter;
-    public Vector3 size;
+    public Vector2 size;
     public bool isUp=false;
     private void Start()
     {
@@ -21,8 +21,16 @@ public class LeverTrigger : MonoBehaviour
             // 获取模型的边界框（AABB）
             Bounds bounds = mesh.bounds;
             // 获取模型的尺寸
-            size = bounds.size;
+            //if (isUp)
+            //{
+            //    size = new Vector2(bounds.size.x,bounds.size.y);
+            //}
+            //else
+            //{
+            //    size = new Vector2(bounds.size.x,bounds.size.z);
+            //}
             
+            size = new Vector2(bounds.size.x,bounds.size.z);
         }
         else
         {
@@ -34,7 +42,7 @@ public class LeverTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player3D"))
         {
-            LevelManager.Instance.set3Dlevel(gameObject,number,new Vector2(size.x,size.z));
+            LevelManager.Instance.set3Dlevel(gameObject,number,size);
             LevelManager.Instance.isDraw = true;
             
         }

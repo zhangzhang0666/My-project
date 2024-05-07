@@ -105,8 +105,8 @@ public class LevelManager : MonoBehaviour
         EdgeCollider2D edge = world2D.GetComponent<EdgeCollider2D>();
         Vector2[] points = new Vector2[5];
         points[0] = new Vector2(0, 0);
-        points[1] = new Vector2(0, levels[number].size.z);
-        points[2] = new Vector2(levels[number].size.x, levels[number].size.z);
+        points[1] = new Vector2(0, levels[number].size.y);
+        points[2] = new Vector2(levels[number].size.x, levels[number].size.y);
         points[3] = new Vector2(levels[number].size.x, 0);
         points[4] = new Vector2(0, 0);
         edge.points = points;
