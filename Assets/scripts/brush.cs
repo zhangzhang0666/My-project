@@ -26,12 +26,9 @@ public class brush : MonoBehaviour
                 transform.position = brushPivot.position;
                 transform.rotation = brushPivot.rotation;
                 transform.localScale = brushPivot.localScale;
-                leftHand.data.target = leftTarget;
-                rightHand.data.target = rightTarget;
-                RigBuilder rigBuilder = other.GetComponent<RigBuilder>();
-                Animator animator = other.GetComponent<Animator>();
-                rigBuilder.Build();
-                animator.Rebind();
+                leftHand.weight = 1f;
+                rightHand.weight = 1f;
+                
                 other.GetComponent<PlayerController3D>().nip = brushNip;
             }
         }

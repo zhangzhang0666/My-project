@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
+
 
 public enum Target
 {
@@ -12,11 +11,14 @@ public enum Target
 }
     
 public class set2D : MonoBehaviour
-{
+{  
+#if UNITY_EDITOR
     public Transform pivot;
     public Transform setTarget;
     public Target target;
     private SpriteRenderer sr;
+    public int number;
+    public LevelManager levelManager;
     
     public void Set()
     {
@@ -43,6 +45,14 @@ public class set2D : MonoBehaviour
         setTarget.position = new Vector3(setTarget.position.x,setTarget.position.y,0f);
         if (target == Target.start)
         {
+            if (levelManager.starts.Count < number)
+            {
+                levelManager.starts.Add(setTarget);
+            }
+            else
+            {
+                levelManager.starts[number - 1] = setTarget;
+            }
         }
         else
         {
@@ -64,9 +74,23 @@ public class set2D : MonoBehaviour
             }
             
             box.isTrigger = true;
+            doorTrigger endDoor = setTarget.GetComponent<doorTrigger>();
+            if (endDoor == null)
+            {
+                endDoor=setTarget.AddComponent<doorTrigger>();
+            }
+            endDoor.number = number;
+            endDoor.animatorEnd = GetComponent<Animator>();
         }
 
         Debug.Log("success");
     }
-}
+    public void nextLevel()
+    { 
+        Debug.Log(1);
+        LevelManager.Instance.change2Dlevel(LevelManager.Instance.levelNumber2D);
+        
+    }
 #endif
+}
+

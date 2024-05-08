@@ -30,7 +30,9 @@ public class LevelManager : MonoBehaviour
     //public Transform pivot2D;
     public GameObject collider;
     public Transform world2D;
-    public Transform[] starts;
+    [HideInInspector]
+    public List<Transform> starts;
+    //public Transform[] starts;
     #endregion
 
     public int brushNumber;
@@ -108,6 +110,8 @@ public class LevelManager : MonoBehaviour
 
     public void change2Dlevel(int number)
     {
+        PlayerController2D.Instance.gameObject.SetActive(true);
+        PlayerController2D.Instance.sprite.gameObject.SetActive(true);
         levelNumber2D = number+1;
         PlayerController2D.Instance.pivot2D = levels[number].pivot;
         

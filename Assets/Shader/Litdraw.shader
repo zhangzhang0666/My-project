@@ -299,7 +299,7 @@ Shader "Unlit/Litdraw"
             // -------------------------------------
             // Includes
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/LitGBufferPass.hlsl"
+            #include "LitGBufferPass.hlsl"
             ENDHLSL
         }
 

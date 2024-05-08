@@ -19,6 +19,7 @@
 TEXTURE2D(_Mask);
 SAMPLER(sampler_Mask);
 float4 _maskColor;
+
 struct Attributes
 {
     float4 positionOS   : POSITION;
