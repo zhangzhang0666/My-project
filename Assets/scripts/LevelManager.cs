@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
     public Transform world2D;
     [HideInInspector]
     public List<Transform> starts;
+    [HideInInspector]
+    public List<Animator> startAnims;
     //public Transform[] starts;
     #endregion
 
@@ -65,7 +67,8 @@ public class LevelManager : MonoBehaviour
         Blitter.BlitCameraTexture(cmd, brushHandle,maskHandle, StepMat, 0);
         RenderPipelineManager.beginCameraRendering += drawRT;
         
-        change2Dlevel(0);
+        set2Dworld(0);
+        levelNumber2D = 1;
     }
 
     public void set3Dlevel(GameObject renderobject,int number,Vector2 size)
@@ -82,10 +85,10 @@ public class LevelManager : MonoBehaviour
         PlayerController3D.Instance.pivot3D = levels[levelNumber3D-1].pivot;
     }
 
-    void setBrush(int number)
+    public void setBrush(int number)
     {
         brushHandle = brushrts[number];
-        
+        brushNumber = number;
     }
     
     void drawRT(ScriptableRenderContext context, Camera camera)
@@ -108,13 +111,20 @@ public class LevelManager : MonoBehaviour
         newcircle.radius = 0.5f;
     }
 
-    public void change2Dlevel(int number)
+    public void end2DLevel(int number)
     {
         PlayerController2D.Instance.gameObject.SetActive(true);
         PlayerController2D.Instance.sprite.gameObject.SetActive(true);
-        levelNumber2D = number+1;
+        set2Dworld(number);
+        PlayerController2D.Instance.setSprite();
+        PlayerController2D.Instance.gameObject.SetActive(false);
+        PlayerController2D.Instance.sprite.gameObject.SetActive(false);
+        startAnims[number].SetTrigger("start");
+    }
+
+    public void set2Dworld(int number)
+    {
         PlayerController2D.Instance.pivot2D = levels[number].pivot;
-        
         EdgeCollider2D edge = world2D.GetComponent<EdgeCollider2D>();
         Vector2[] points = new Vector2[5];
         points[0] = new Vector2(0, 0);
@@ -124,5 +134,14 @@ public class LevelManager : MonoBehaviour
         points[4] = new Vector2(0, 0);
         edge.points = points;
         PlayerController2D.Instance.transform.position = starts[number].position;
+        
     }
+    public void start2Dlevel(int number)
+    {
+        levelNumber2D = number+1;
+        PlayerController2D.Instance.gameObject.SetActive(true);
+        PlayerController2D.Instance.sprite.gameObject.SetActive(true);
+    }
+
+    
 }

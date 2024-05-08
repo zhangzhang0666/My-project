@@ -42,8 +42,6 @@ public class LeverTrigger : MonoBehaviour
         {
             Debug.Log("找不到MeshFilter组件或Mesh为空");
         }
-
-        //pivot.localScale = new Vector3(1f/ transform.localScale.x,1f/ transform.localScale.y,1f/ transform.localScale.z);
     }
 
     private void OnCollisionEnter(Collision other)

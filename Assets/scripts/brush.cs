@@ -21,14 +21,13 @@ public class brush : MonoBehaviour
             popTips();
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                LevelManager.Instance.brushNumber = number;
+                LevelManager.Instance.setBrush(number);
                 transform.SetParent(other.transform);
                 transform.position = brushPivot.position;
                 transform.rotation = brushPivot.rotation;
                 transform.localScale = brushPivot.localScale;
                 leftHand.weight = 1f;
                 rightHand.weight = 1f;
-                
                 other.GetComponent<PlayerController3D>().nip = brushNip;
             }
         }

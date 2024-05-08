@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-namespace TarodevController
-{
+using TarodevController;
+
     /// <summary>
     /// Hey!
     /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
@@ -93,7 +93,7 @@ namespace TarodevController
             Animate();
         }
 
-        void setSprite()
+        public void setSprite()
         {
             Vector3 RelativePosition;
             if (LevelManager.Instance.levels[LevelManager.Instance.levelNumber2D-1].isUp)
@@ -251,4 +251,3 @@ namespace TarodevController
 #endif
     }
     
-}

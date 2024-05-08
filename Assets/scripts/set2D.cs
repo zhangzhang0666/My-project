@@ -12,16 +12,16 @@ public enum Target
     
 public class set2D : MonoBehaviour
 {  
-#if UNITY_EDITOR
     public Transform pivot;
     public Transform setTarget;
     public Target target;
     private SpriteRenderer sr;
     public int number;
     public LevelManager levelManager;
-    
+    private Animator _animator;
     public void Set()
     {
+        _animator = GetComponent<Animator>();
         Vector3 normal = transform.up;
 
         // 获取世界空间中的上方向
@@ -53,6 +53,14 @@ public class set2D : MonoBehaviour
             {
                 levelManager.starts[number - 1] = setTarget;
             }
+            if (levelManager.startAnims.Count < number)
+            {
+                levelManager.startAnims.Add(_animator);
+            }
+            else
+            {
+                levelManager.startAnims[number - 1] =_animator;
+            }
         }
         else
         {
@@ -80,17 +88,21 @@ public class set2D : MonoBehaviour
                 endDoor=setTarget.AddComponent<doorTrigger>();
             }
             endDoor.number = number;
-            endDoor.animatorEnd = GetComponent<Animator>();
+            endDoor.animatorEnd = _animator;
         }
 
         Debug.Log("success");
     }
-    public void nextLevel()
+    public void levelEnd()
     { 
-        Debug.Log(1);
-        LevelManager.Instance.change2Dlevel(LevelManager.Instance.levelNumber2D);
-        
+        LevelManager.Instance.end2DLevel(number);
+        CameraManager.Instance.changeCamera(number);
     }
-#endif
+    public void levelStart()
+    { 
+        
+        LevelManager.Instance.start2Dlevel(number-1);
+    }
+
 }
 
