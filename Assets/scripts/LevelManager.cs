@@ -134,7 +134,10 @@ public class LevelManager : MonoBehaviour
         points[4] = new Vector2(0, 0);
         edge.points = points;
         PlayerController2D.Instance.transform.position = starts[number].position;
-        
+        if (levels[number].director)
+        {
+            levels[number].director.Play();
+        }
     }
     public void start2Dlevel(int number)
     {

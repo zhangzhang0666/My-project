@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightManager : MonoBehaviour
 {
     Light light;
-    public bool islight;
+    bool islight;
 
     int timer;
     public int totaltime;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class LeverTrigger : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LeverTrigger : MonoBehaviour
     [SerializeField]protected int number;
     public Transform pivot;
     private MeshFilter meshFilter;
+    public PlayableDirector director;
     [HideInInspector]
     public Vector2 size;
 

@@ -96,14 +96,14 @@ using TarodevController;
         public void setSprite()
         {
             Vector3 RelativePosition;
-            if (LevelManager.Instance.levels[LevelManager.Instance.levelNumber2D-1].isUp)
-            {
+            //if (LevelManager.Instance.levels[LevelManager.Instance.levelNumber2D-1].isUp)
+            //{
                 RelativePosition = new Vector3(scaleFactor* transform.position.x, scaleFactor* transform.position.y,-0.01f );
-            }
-            else
-            {
-                RelativePosition = new Vector3(scaleFactor * transform.position.x, 0.01f,scaleFactor* transform.position.y);
-            }
+            //}
+            //else
+            //{
+               // RelativePosition = new Vector3(scaleFactor * transform.position.x, 0.01f,scaleFactor* transform.position.y);
+            //}
 
             sprite.position = pivot2D.TransformPoint(RelativePosition);
             sprite.rotation = pivot2D.rotation;
