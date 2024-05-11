@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TarodevController;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -26,6 +27,8 @@ public class LevelManager : MonoBehaviour
     #endregion
 
     #region 2D
+
+    public float radius;
     public int levelNumber2D;
     //public Transform pivot2D;
     public GameObject collider;
@@ -35,6 +38,8 @@ public class LevelManager : MonoBehaviour
     [HideInInspector]
     public List<Animator> startAnims;
     //public Transform[] starts;
+    private List<Vector2> lineList;
+    public int star2D;
     #endregion
 
     public int brushNumber;
@@ -106,13 +111,19 @@ public class LevelManager : MonoBehaviour
     
     public void AddPoints(Vector2 newpoint)
     {
-        CircleCollider2D newcircle = collider.AddComponent<CircleCollider2D>();
-        newcircle.offset = newpoint;
-        newcircle.radius = 0.5f;
+        if(levelNumber3D!=levelNumber2D)
+            return;
+        EdgeCollider2D edge = collider.GetComponent<EdgeCollider2D>();
+        lineList.Add(newpoint);
+        edge.points = lineList.ToArray();
+        // CircleCollider2D newcircle = collider.AddComponent<CircleCollider2D>();
+        // newcircle.offset = newpoint;
+        // newcircle.radius = radius;
     }
 
     public void end2DLevel(int number)
     {
+        star2D = 0;
         PlayerController2D.Instance.gameObject.SetActive(true);
         PlayerController2D.Instance.sprite.gameObject.SetActive(true);
         set2Dworld(number);
@@ -126,6 +137,13 @@ public class LevelManager : MonoBehaviour
     {
         PlayerController2D.Instance.pivot2D = levels[number].pivot;
         EdgeCollider2D edge = world2D.GetComponent<EdgeCollider2D>();
+        EdgeCollider2D line = collider.GetComponent<EdgeCollider2D>();
+        lineList= new List<Vector2>();
+        line.points =  new Vector2[]
+        {
+            new Vector2(0, 0),
+            new Vector2(0, 0),
+        };
         Vector2[] points = new Vector2[5];
         points[0] = new Vector2(0, 0);
         points[1] = new Vector2(0, levels[number].size.y);

@@ -42,6 +42,7 @@ Shader "Unlit/draw"
                 half2 posUV=(i.texcoord -1+pos)*_BrushSize.xy+0.5;
                 #if UNITY_UV_STARTS_AT_TOP
                 posUV.y=1.0-posUV.y;
+                posUV=clamp(0,1,posUV);
                 #endif
                 
                 half4 col = SAMPLE_TEXTURE2D(_BlitTexture, sampler_LinearClamp, posUV);
