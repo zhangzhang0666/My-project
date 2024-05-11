@@ -11,25 +11,37 @@ public class brush : MonoBehaviour
     public Transform brushNip;
     public TwoBoneIKConstraint leftHand;
     public TwoBoneIKConstraint rightHand;
-    public Transform leftTarget;
-    public Transform rightTarget;
-    
-    private void OnTriggerStay(Collider other)
+    private bool isPick;
+    private bool isPickable;
+    private void Update()
     {
-        if (other.CompareTag("Player3D"))
+        if (isPickable)
         {
             popTips();
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKey(KeyCode.Q))
             {
                 LevelManager.Instance.setBrush(number);
-                transform.SetParent(other.transform);
+                transform.SetParent(PlayerController3D.Instance.transform3D);
                 transform.position = brushPivot.position;
                 transform.rotation = brushPivot.rotation;
                 transform.localScale = brushPivot.localScale;
                 leftHand.weight = 1f;
                 rightHand.weight = 1f;
-                other.GetComponent<PlayerController3D>().nip = brushNip;
+                PlayerController3D.Instance.nip = brushNip;
+                isPick = true;
+                isPickable = false;
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(isPick)
+            return;
+        if (other.CompareTag("Player3D"))
+        {
+            isPickable = true;
+            
         }
     }
 

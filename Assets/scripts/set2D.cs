@@ -16,9 +16,10 @@ public class set2D : MonoBehaviour
     public Transform setTarget;
     public Target target;
     private SpriteRenderer sr;
-    public int number;
+    public int levelNumber;
     public LevelManager levelManager;
     private Animator _animator;
+    public int starNumber;
     public void Set()
     {
         _animator = GetComponent<Animator>();
@@ -45,21 +46,21 @@ public class set2D : MonoBehaviour
         setTarget.position = new Vector3(setTarget.position.x,setTarget.position.y,0f);
         if (target == Target.start)
         {
-            if (levelManager.starts.Count < number)
+            if (levelManager.starts.Count < levelNumber)
             {
                 levelManager.starts.Add(setTarget);
             }
             else
             {
-                levelManager.starts[number - 1] = setTarget;
+                levelManager.starts[levelNumber - 1] = setTarget;
             }
-            if (levelManager.startAnims.Count < number)
+            if (levelManager.startAnims.Count < levelNumber)
             {
                 levelManager.startAnims.Add(_animator);
             }
             else
             {
-                levelManager.startAnims[number - 1] =_animator;
+                levelManager.startAnims[levelNumber - 1] =_animator;
             }
         }
         else
@@ -87,21 +88,22 @@ public class set2D : MonoBehaviour
             {
                 endDoor=setTarget.AddComponent<doorTrigger>();
             }
-            endDoor.number = number;
+            endDoor.number = levelNumber;
             endDoor.animatorEnd = _animator;
+            endDoor.starNumber = starNumber;
         }
 
         Debug.Log("success");
     }
     public void levelEnd()
     { 
-        LevelManager.Instance.end2DLevel(number);
-        CameraManager.Instance.changeCamera(number);
+        LevelManager.Instance.end2DLevel(levelNumber);
+        CameraManager.Instance.changeCamera(levelNumber);
     }
     public void levelStart()
     { 
         
-        LevelManager.Instance.start2Dlevel(number-1);
+        LevelManager.Instance.start2Dlevel(levelNumber-1);
     }
 
 }

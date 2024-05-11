@@ -28,9 +28,11 @@ public class PlayerController3D : MonoBehaviour
 
     private float currentSpeed;
     private float targetSpeed;
+    [HideInInspector] public Transform transform3D;
     public void Awake()
     {
         Instance = this;
+        transform3D = transform;
     }
     void Start()
     {
@@ -72,10 +74,11 @@ public class PlayerController3D : MonoBehaviour
         targetSpeed = speed * movement.magnitude;
         animator.speed = speedScale;
         currentSpeed = Mathf.Lerp(currentSpeed,targetSpeed,  0.8f);
+        
         animator.SetFloat("speed",currentSpeed);
+        Debug.Log(animator.velocity);
         _rigidbody.velocity = animator.velocity;
         //characterController.SimpleMove(animator.velocity);
-        
         //feetTween = Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f);
         //feetTween = feetTween > 0.5f ? 1f : -1f;
     }
@@ -94,7 +97,11 @@ public class PlayerController3D : MonoBehaviour
             return;
         Vector3 relativepoint = pivot3D.InverseTransformPoint(nip.position);
         Vector2 newpoint = new Vector2(relativepoint.x, relativepoint.y);
+<<<<<<< HEAD
          Debug.Log(newpoint);
+=======
+        // Debug.Log(newpoint);
+>>>>>>> he
         if (Vector3.Distance(nip.position,lastPosition1) > 0.03f)
         {
             LevelManager.Instance.AddPoints(newpoint);
