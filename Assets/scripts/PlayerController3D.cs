@@ -93,8 +93,8 @@ public class PlayerController3D : MonoBehaviour
         if(!LevelManager.Instance.isDraw)
             return;
         Vector3 relativepoint = pivot3D.InverseTransformPoint(nip.position);
-        Vector2 newpoint = new Vector2(relativepoint.x, relativepoint.z);
-        // Debug.Log(newpoint);
+        Vector2 newpoint = new Vector2(relativepoint.x, relativepoint.y);
+         Debug.Log(newpoint);
         if (Vector3.Distance(nip.position,lastPosition1) > 0.03f)
         {
             LevelManager.Instance.AddPoints(newpoint);

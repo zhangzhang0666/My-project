@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class _3DTriggerComp : MonoBehaviour
 {
-    Animator anim;
     Collider coll;
+    public PlayableDirector director;
     // Start is called before the first frame update
     void Start()
     {
         coll = GetComponent<Collider>();
-        anim = GetComponent<Animator>();
-        AnimationClip[] clips = GetComponent<Animator>().runtimeAnimatorController.animationClips;
     }
 
     // Update is called once per frame
@@ -22,12 +21,9 @@ public class _3DTriggerComp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (anim)
+        if (other.tag == "Player3D"&& director)
         {
-            anim.SetBool("in", true);
-            foreach(var item in clips)
+            director.Play();
         }
-
-        
     }
 }
