@@ -7,7 +7,8 @@ using UnityEngine;
 public enum Target
 {
     start,
-    end
+    end,
+    star
 }
     
 public class set2D : MonoBehaviour
@@ -63,7 +64,7 @@ public class set2D : MonoBehaviour
                 levelManager.startAnims[levelNumber - 1] =_animator;
             }
         }
-        else
+        else if(target == Target.end)
         {
             sr = GetComponent<SpriteRenderer>();
             Vector3 spriteSize = sr.bounds.size;
@@ -91,6 +92,28 @@ public class set2D : MonoBehaviour
             endDoor.number = levelNumber;
             endDoor.animatorEnd = _animator;
             endDoor.starNumber = starNumber;
+        }
+        else
+        {
+            sr = GetComponent<SpriteRenderer>();
+            Vector3 spriteSize = sr.bounds.size;
+            CircleCollider2D circle= setTarget.GetComponent<CircleCollider2D>();
+            if (circle == null)
+            {
+                circle=setTarget.AddComponent<CircleCollider2D>();
+            }
+            
+            circle.radius = spriteSize.x/2f;
+            circle.isTrigger = true;
+            
+            starTrigger star = setTarget.GetComponent<starTrigger>();
+            if (star  == null)
+            {
+                star =setTarget.AddComponent<starTrigger>();
+            }
+
+            star.number = levelNumber;
+            star.set2D = gameObject;
         }
 
         Debug.Log("success");

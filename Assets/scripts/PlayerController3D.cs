@@ -14,8 +14,8 @@ public class PlayerController3D : MonoBehaviour
     private float horizontal; 
     private float vertical;
     
-    private Vector3 lastPosition1;
-    private Vector3 lastPosition2;
+    private Vector2 lastPosition1;
+    private Vector2 lastPosition2;
     [HideInInspector]
     public Transform pivot3D;
 
@@ -76,7 +76,6 @@ public class PlayerController3D : MonoBehaviour
         currentSpeed = Mathf.Lerp(currentSpeed,targetSpeed,  0.8f);
         
         animator.SetFloat("speed",currentSpeed);
-        Debug.Log(animator.velocity);
         _rigidbody.velocity = animator.velocity;
         //characterController.SimpleMove(animator.velocity);
         //feetTween = Mathf.Repeat(animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f);
@@ -95,20 +94,20 @@ public class PlayerController3D : MonoBehaviour
     {
         if(!LevelManager.Instance.isDraw)
             return;
-        Vector3 relativepoint = pivot3D.InverseTransformPoint(nip.position);
+        Vector3 relativepoint = pivot3D.InverseTransformPoint(transform.position);
         Vector2 newpoint = new Vector2(relativepoint.x, relativepoint.y);
-        Debug.Log(newpoint);
+        
 
-        if (Vector3.Distance(nip.position,lastPosition1) > 0.03f)
+        if (Vector2.Distance(newpoint,lastPosition1) > 0.03f)
         {
             LevelManager.Instance.AddPoints(newpoint);
-            lastPosition1 = nip.position;
+            lastPosition1 = newpoint;
         }
 
-        if (Vector3.Distance(nip.position, lastPosition2) > 0.01f)
+        if (Vector2.Distance(newpoint, lastPosition2) > 0.01f)
         {
             LevelManager.Instance.drawMask(newpoint);
-            lastPosition2 = nip.position;
+            lastPosition2 = newpoint;
         }
     }
 }

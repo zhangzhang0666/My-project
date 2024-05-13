@@ -16,7 +16,7 @@ public class doorTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (LevelManager.Instance.levelNumber2D == number && LevelManager.Instance.star2D==starNumber )
+        if (LevelManager.Instance.levelNumber2D == number && LevelManager.Instance.star2D>=starNumber )
         {
             animatorEnd.SetTrigger("end");
             PlayerController2D.Instance.gameObject.SetActive(false);
