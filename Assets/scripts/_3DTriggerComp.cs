@@ -7,6 +7,7 @@ public class _3DTriggerComp : MonoBehaviour
 {
     Collider coll;
     public PlayableDirector director;
+    public GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,10 @@ public class _3DTriggerComp : MonoBehaviour
         if (other.tag == "Player3D"&& director)
         {
             director.Play();
+        }
+        if (obj)
+        {
+            obj.SetActive(true);
         }
     }
 }

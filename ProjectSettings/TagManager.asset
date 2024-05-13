@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player3D
   - Player2D
+  - Sprite2D
   layers:
   - Default
   - TransparentFX
