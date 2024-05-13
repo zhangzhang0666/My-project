@@ -1405,8 +1405,9 @@ MonoBehaviour:
   pivot: {fileID: 1990726660}
   setTarget: {fileID: 952235490}
   target: 1
-  number: 2
+  levelNumber: 0
   levelManager: {fileID: 2042858296}
+  starNumber: 0
 --- !u!212 &243261475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1562,11 +1563,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0, y: 0}
-  - {x: 0, y: 5}
-  - {x: 5, y: 5}
-  - {x: 5, y: 0}
-  - {x: 0, y: 0}
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2789,6 +2787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 1
+  starNumber: 0
   animatorEnd: {fileID: 1072332912}
 --- !u!61 &536616173
 BoxCollider2D:
@@ -4133,7 +4132,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5db6c970d48d57a40be985bcf7db4cf9, type: 2}
+  - {fileID: 2100000, guid: 6900e70e7a0c8864d982caea8b4f3117, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4320,8 +4319,9 @@ MonoBehaviour:
   pivot: {fileID: 2043606736}
   setTarget: {fileID: 1697880209}
   target: 0
-  number: 1
+  levelNumber: 0
   levelManager: {fileID: 2042858296}
+  starNumber: 0
 --- !u!212 &837476076
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5113,6 +5113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 2
+  starNumber: 0
   animatorEnd: {fileID: 243261477}
 --- !u!212 &952235493
 SpriteRenderer:
@@ -6099,8 +6100,9 @@ MonoBehaviour:
   pivot: {fileID: 2043606736}
   setTarget: {fileID: 536616171}
   target: 1
-  number: 1
+  levelNumber: 0
   levelManager: {fileID: 2042858296}
+  starNumber: 0
 --- !u!95 &1072332912
 Animator:
   serializedVersion: 5
@@ -6579,7 +6581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143819956}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6892251, y: -0.00000007199277, z: 0.00000006848307, w: 0.7245473}
+  m_LocalRotation: {x: 0.6892251, y: 0.00000007199277, z: -0.00000006848307, w: 0.7245473}
   m_LocalPosition: {x: -7.047823, y: 100.74485, z: -2.922758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6769,7 +6771,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5db6c970d48d57a40be985bcf7db4cf9, type: 2}
+  - {fileID: 2100000, guid: 6900e70e7a0c8864d982caea8b4f3117, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8920,6 +8922,7 @@ MonoBehaviour:
   pivot3D: {fileID: 0}
   nip: {fileID: 0}
   rotatespeed: 500
+  transform3D: {fileID: 0}
 --- !u!4 &1313264453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 052e8995829dda94eab3c890408d7dae, type: 3}
@@ -9045,7 +9048,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1313264458
 CapsuleCollider:
@@ -10663,8 +10666,9 @@ MonoBehaviour:
   pivot: {fileID: 1990726660}
   setTarget: {fileID: 174028020}
   target: 0
-  number: 2
+  levelNumber: 0
   levelManager: {fileID: 2042858296}
+  starNumber: 0
 --- !u!212 &1543318050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13117,12 +13121,13 @@ MonoBehaviour:
   - {fileID: 1169635019}
   levelNumber3D: 0
   isDraw: 0
-  StepMat: {fileID: 2100000, guid: 3c4a03488368f8c40a2dbc293c9c7b85, type: 2}
+  StepMat: {fileID: 2100000, guid: 6e211686f75a0fb4a90e95b0c23d0f93, type: 2}
   brushs:
   - {fileID: 2800000, guid: b741986ba0921df47a5d9d73f2bf630f, type: 3}
   brushColor:
   - {r: 1, g: 0.80399513, b: 0, a: 0}
   brushsize: 0.1
+  radius: 0.1
   levelNumber2D: 0
   collider: {fileID: 1458675587}
   world2D: {fileID: 280855301}
@@ -13132,6 +13137,7 @@ MonoBehaviour:
   startAnims:
   - {fileID: 837476078}
   - {fileID: 1543318052}
+  star2D: 0
   brushNumber: 0
 --- !u!4 &2042858297
 Transform:
@@ -14339,8 +14345,6 @@ MonoBehaviour:
   brushNip: {fileID: 1107167062}
   leftHand: {fileID: 1778507905}
   rightHand: {fileID: 987630248}
-  leftTarget: {fileID: 847652608}
-  rightTarget: {fileID: 527387555}
 --- !u!33 &8486570985709539822
 MeshFilter:
   m_ObjectHideFlags: 0

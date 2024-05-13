@@ -111,14 +111,14 @@ public class LevelManager : MonoBehaviour
     
     public void AddPoints(Vector2 newpoint)
     {
-        if(levelNumber3D!=levelNumber2D)
-            return;
-        EdgeCollider2D edge = collider.GetComponent<EdgeCollider2D>();
-        lineList.Add(newpoint);
-        edge.points = lineList.ToArray();
-        // CircleCollider2D newcircle = collider.AddComponent<CircleCollider2D>();
-        // newcircle.offset = newpoint;
-        // newcircle.radius = radius;
+        // if(levelNumber3D!=levelNumber2D)
+        //     return;
+        // EdgeCollider2D edge = collider.GetComponent<EdgeCollider2D>();
+        // lineList.Add(newpoint);
+        // edge.points = lineList.ToArray();
+        CircleCollider2D newcircle = collider.AddComponent<CircleCollider2D>();
+        newcircle.offset = newpoint;
+        newcircle.radius = radius;
     }
 
     public void end2DLevel(int number)
@@ -137,13 +137,13 @@ public class LevelManager : MonoBehaviour
     {
         PlayerController2D.Instance.pivot2D = levels[number].pivot;
         EdgeCollider2D edge = world2D.GetComponent<EdgeCollider2D>();
-        EdgeCollider2D line = collider.GetComponent<EdgeCollider2D>();
-        lineList= new List<Vector2>();
-        line.points =  new Vector2[]
-        {
-            new Vector2(0, 0),
-            new Vector2(0, 0),
-        };
+        // EdgeCollider2D line = collider.GetComponent<EdgeCollider2D>();
+        // lineList= new List<Vector2>();
+        // line.points =  new Vector2[]
+        // {
+        //     new Vector2(0, 0),
+        //     new Vector2(0, 0),
+        // };
         Vector2[] points = new Vector2[5];
         points[0] = new Vector2(0, 0);
         points[1] = new Vector2(0, levels[number].size.y);
